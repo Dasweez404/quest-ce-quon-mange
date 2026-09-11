@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="_ds/organic-34e47926-2a2b-492e-b660-821709950fe4/styles.css">
+<script src="_ds/organic-34e47926-2a2b-492e-b660-821709950fe4/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#efe6d6;font-family:"Figtree",system-ui,sans-serif;color:#201e1d}
+a{color:#8c491a}a:hover{color:#b2622d}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(32,30,29,.1);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.dv-tid{font:700 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#201e1d;color:#f5ead8;border-radius:6px;text-decoration:none}
+.dv-tname{font:700 13px/1.2 "Figtree",system-ui,sans-serif;color:#201e1d}
+.dv-intro{max-width:640px;font:400 13px/1.6 "Figtree",system-ui,sans-serif;color:rgba(32,30,29,.6);margin:0 0 26px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:700 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(32,30,29,.09);color:#201e1d;border-radius:6px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:500 11.5px/1.35 "Figtree",system-ui,sans-serif;color:rgba(32,30,29,.6);max-width:392px}
+.dv-opt:target .dv-oid{background:#c67139;color:#fff}
+.dv-next{margin:26px 0 0;font:400 12px/1.6 "Figtree",system-ui,sans-serif;color:rgba(32,30,29,.55)}
+.ph{width:392px;height:800px;border-radius:46px;background:#201e1d;padding:9px;box-shadow:0 12px 32px rgba(46,43,37,.22);flex:none}
+.ph-in{width:100%;height:100%;border-radius:38px;overflow:hidden;background:#f5ead8;display:flex;flex-direction:column;position:relative}
+.ph-sb{flex:none;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font:700 12.5px "Figtree",system-ui,sans-serif;color:#201e1d}
+.scrl{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.scrl::-webkit-scrollbar{width:0}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Le flow complet, sur la base de <a class="dv-oid" href="#1a">1a</a></span></div>
+<p class="dv-intro">Prototype cliquable : listes dépliables, catégorie en plein écran avec recherche et ajout, short-list de 3 plats (dont des plats <em>inventés</em> à partir de tes envies, pas seulement ceux de ta liste), fiche du plat choisi, et un écran réglages qui montre ce que l'app a retenu de tes choix. Chaque plat validé fait monter l'affinité de ses ingrédients, donc les propositions dérivent vers tes habitudes.</p>
+<div class="dv-opts">
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Application complète — coche des envies, puis « Proposer 3 plats ».</div>
+<div class="ph"><div class="ph-in">
+<div class="ph-sb"><span>20:41</span><span style="display:flex;align-items:center;gap:5px"><span style="display:flex;align-items:flex-end;gap:1.5px"><span style="width:3px;height:4px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:6px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:8px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:10px;border-radius:1px;background:#201e1d"></span></span><span style="width:20px;height:10px;border-radius:3px;border:1.2px solid #201e1d;padding:1.4px;display:flex"><span style="flex:1;border-radius:1.5px;background:#201e1d"></span></span></span></div>
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
+<div style="flex:none;padding:4px 22px 12px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+<div style="font:400 27px/1.05 Caprasimo,system-ui,sans-serif;letter-spacing:-.015em">Qu'est ce qu'on mange ?</div>
+<div onClick="{{goSettings}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#645c50" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+<span onClick="{{togYes}}" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;cursor:pointer;user-select:none;font-size:12.5px;font-weight:700;background:{{yesChipBg}};color:{{yesChipFg}};border:1.5px solid {{yesChipBc}}">✓ <span>{{yesLabel}}</span></span>
+<span onClick="{{togNo}}" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;cursor:pointer;user-select:none;font-size:12.5px;font-weight:700;background:{{noChipBg}};color:{{noChipFg}};border:1.5px solid {{noChipBc}}">✕ <span>{{noLabel}}</span></span>
+</div>
+<input value="{{hQuery}}" onChange="{{onHQuery}}" placeholder="Chercher un plat, un ingrédient…" style="margin-top:12px;width:100%;box-sizing:border-box;height:44px;border-radius:999px;border:1.5px solid rgba(32,30,29,.14);background:#f9f4ed;padding:0 18px;font:400 14.5px Figtree,system-ui,sans-serif;color:#201e1d;outline:none">
+</div>
+<div class="scrl" style="padding:0 22px 120px">
+<sc-if value="{{hSearching}}" hint-placeholder-val="{{false}}">
+<div style="font-size:12px;font-weight:600;color:#82796a;margin:2px 0 12px">{{hCount}}</div>
+<div style="display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{hResults}}" as="it" hint-placeholder-count="12">
+<span onClick="{{it.onClick}}" style="padding:8px 13px;border-radius:999px;font-size:13.5px;font-weight:600;line-height:1.15;cursor:pointer;user-select:none;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}}</span>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{hPanel}}" hint-placeholder-val="{{false}}">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 12px">
+<span style="font-size:12px;font-weight:600;color:#82796a">{{panelHint}}</span>
+<span onClick="{{clearPanel}}" style="font-size:12.5px;font-weight:700;color:#8c491a;cursor:pointer">Tout annuler</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{panelItems}}" as="it" hint-placeholder-count="6">
+<span onClick="{{it.onClear}}" style="display:inline-flex;align-items:center;gap:8px;padding:8px 11px 8px 13px;border-radius:999px;font-size:13.5px;font-weight:600;line-height:1.15;cursor:pointer;user-select:none;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}} <span style="font-size:12px;opacity:.75">✕</span></span>
+</sc-for>
+</div>
+<sc-if value="{{panelEmpty}}" hint-placeholder-val="{{false}}">
+<div style="padding:20px 2px;font-size:13.5px;color:#a19786">{{panelEmptyText}}</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{showCats}}" hint-placeholder-val="{{true}}">
+<sc-for list="{{catsP}}" as="c" hint-placeholder-count="8">
+<div style="margin-bottom:8px;background:#f9f4ed;border-radius:26px;overflow:hidden;box-shadow:0 1px 2px rgba(46,43,37,.1)">
+<div style="display:flex;align-items:center;gap:10px;padding:13px 16px">
+<span onClick="{{c.onToggle}}" style="flex:1;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none">
+<span style="width:31px;height:31px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;background:{{c.chipBg}}">{{c.emoji}}</span>
+<span style="flex:1;font:700 14.5px/1.25 Figtree,system-ui,sans-serif">{{c.name}}</span>
+<span style="font-size:12px;font-weight:700;color:#b2622d">{{c.summary}}</span>
+<span style="font-size:11px;color:#a19786;transform:rotate({{c.rot}});display:inline-block">▼</span>
+</span>
+<span onClick="{{c.onOpenFull}}" style="width:30px;height:30px;flex:none;border-radius:50%;border:1.5px solid rgba(32,30,29,.14);display:flex;align-items:center;justify-content:center;font-size:13px;color:#645c50;cursor:pointer">→</span>
+</div>
+<sc-if value="{{c.open}}" hint-placeholder-val="{{true}}">
+<div style="padding:2px 16px 16px;border-top:1px solid rgba(32,30,29,.07);display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{c.items}}" as="it" hint-placeholder-count="12">
+<span onClick="{{it.onClick}}" style="padding:8px 13px;border-radius:999px;font-size:13.5px;font-weight:600;line-height:1.15;cursor:pointer;user-select:none;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}}</span>
+</sc-for>
+<sc-if value="{{c.hasMore}}" hint-placeholder-val="{{false}}">
+<span onClick="{{c.onOpenFull}}" style="padding:8px 13px;border-radius:999px;font-size:13.5px;font-weight:700;line-height:1.15;cursor:pointer;user-select:none;background:#f0fae1;color:#3d472b;border:1.5px solid #ccdbb2">{{c.moreLabel}}</span>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</sc-if>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0))">
+<div onClick="{{goResult}}" style="height:54px;border-radius:999px;background:#c67139;color:#f5ead8;display:flex;align-items:center;justify-content:center;gap:8px;font:400 17px Caprasimo,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.16)">Proposer 3 plats</div>
+</div>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;left:22px;right:22px;bottom:92px;padding:12px 18px;border-radius:999px;background:#3d472b;color:#f0fae1;font-size:13.5px;font-weight:600;text-align:center;box-shadow:0 12px 32px rgba(46,43,37,.22)">{{toast}}</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{isCat}}" hint-placeholder-val="{{false}}">
+<div style="flex:none;padding:6px 22px 12px">
+<div style="display:flex;align-items:center;gap:12px">
+<span onClick="{{goHome}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)">←</span>
+<span style="font:400 23px/1.05 Caprasimo,system-ui,sans-serif;letter-spacing:-.015em">{{catName}}</span>
+</div>
+<input value="{{query}}" onChange="{{onQuery}}" placeholder="Chercher dans la catégorie" style="margin-top:14px;width:100%;box-sizing:border-box;height:44px;border-radius:999px;border:1.5px solid rgba(32,30,29,.14);background:#f9f4ed;padding:0 18px;font:400 14.5px Figtree,system-ui,sans-serif;color:#201e1d;outline:none">
+<div style="display:flex;gap:7px;margin-top:12px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+<span onClick="{{f.onClick}}" style="padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer;user-select:none;background:{{f.bg}};color:{{f.fg}};border:1.5px solid {{f.bc}}">{{f.name}}</span>
+</sc-for>
+</div>
+</div>
+<div class="scrl" style="padding:4px 22px 110px">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{catItems}}" as="it" hint-placeholder-count="20">
+<span onClick="{{it.onClick}}" style="padding:9px 15px;border-radius:999px;font-size:14.5px;font-weight:600;cursor:pointer;user-select:none;line-height:1.2;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}}</span>
+</sc-for>
+</div>
+<sc-if value="{{catEmpty}}" hint-placeholder-val="{{false}}">
+<div style="padding:26px 4px;font-size:13.5px;color:#a19786">Rien de ce nom dans cette catégorie. Tu peux l'ajouter.</div>
+</sc-if>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0))">
+<div onClick="{{goAdd}}" style="height:52px;border-radius:999px;border:1.5px solid rgba(32,30,29,.16);display:flex;align-items:center;justify-content:center;gap:8px;font:700 14.5px Figtree,system-ui,sans-serif;color:#201e1d;cursor:pointer;background:#f9f4ed">＋ Ajouter un item</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isResult}}" hint-placeholder-val="{{false}}">
+<div style="flex:none;padding:6px 22px 8px;display:flex;align-items:center;gap:12px">
+<span onClick="{{goHome}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)">←</span>
+<span style="font:400 23px/1.05 Caprasimo,system-ui,sans-serif">Ce soir</span>
+</div>
+<div class="scrl" style="padding:10px 22px 110px">
+<div style="font-size:13px;color:#645c50;margin-bottom:16px">{{resultIntro}}</div>
+<sc-for list="{{proposals}}" as="p" hint-placeholder-count="3">
+<div onClick="{{p.onClick}}" style="margin-bottom:12px;padding:20px;border-radius:28px;background:{{p.cardBg}};border:1.5px solid {{p.cardBc}};cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.1)">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+<span style="padding:4px 10px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:{{p.tagBg}};color:{{p.tagFg}}">{{p.kind}}</span>
+<span style="font-size:11.5px;font-weight:700;color:#82796a">{{p.rank}}</span>
+</div>
+<div style="font:400 26px/1.05 Caprasimo,system-ui,sans-serif;letter-spacing:-.015em;margin-bottom:8px">{{p.name}}</div>
+<div style="font-size:13.5px;line-height:1.5;color:#645c50">{{p.why}}</div>
+</div>
+</sc-for>
+<div onClick="{{reroll}}" style="margin-top:6px;height:48px;border-radius:999px;border:1.5px dashed rgba(32,30,29,.2);display:flex;align-items:center;justify-content:center;font:700 14px Figtree,system-ui,sans-serif;color:#645c50;cursor:pointer">↻ Trois autres idées</div>
+<sc-if value="{{noProposals}}" hint-placeholder-val="{{false}}">
+<div style="padding:20px 2px;font-size:14px;line-height:1.6;color:#82796a">Coche au moins deux ou trois envies et je te sors quelque chose.</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isDish}}" hint-placeholder-val="{{false}}">
+<div style="flex:none;padding:6px 22px 0;display:flex;align-items:center;gap:12px">
+<span onClick="{{goResult}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)">←</span>
+</div>
+<div class="scrl" style="padding:18px 22px 120px">
+<div style="position:relative;width:100%;height:178px;margin-bottom:20px">
+<image-slot id="{{dishSlotId}}" shape="rounded" radius="28" placeholder="Dépose une photo du plat"></image-slot>
+</div>
+<div style="font:400 36px/1.02 Caprasimo,system-ui,sans-serif;letter-spacing:-.02em">{{dishName}}</div>
+<div style="margin-top:10px;font-size:13.5px;color:#645c50">{{dishWhy}}</div>
+<div style="margin-top:24px;font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a">Ce qu'il te faut</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<sc-for list="{{dishTags}}" as="t" hint-placeholder-count="5">
+<span style="padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;background:{{t.bg}};color:{{t.fg}};border:1.5px solid {{t.bc}}">{{t.name}}</span>
+</sc-for>
+</div>
+<div style="margin-top:26px;font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a">Trouver la recette</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+<sc-for list="{{recipes}}" as="r" hint-placeholder-count="3">
+<a href="{{r.href}}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;background:#f9f4ed;text-decoration:none;color:#201e1d;box-shadow:0 1px 2px rgba(46,43,37,.1)">
+<span style="width:32px;height:32px;flex:none;border-radius:50%;background:#f0fae1;display:flex;align-items:center;justify-content:center;font:700 12.5px Figtree,system-ui,sans-serif;color:#3d472b">{{r.initial}}</span>
+<span style="flex:1">
+<span style="display:block;font-size:14.5px;font-weight:700">{{r.site}}</span>
+<span style="display:block;font-size:12.5px;color:#82796a;margin-top:1px">{{r.label}}</span>
+</span>
+<span style="font-size:14px;color:#a19786">↗</span>
+</a>
+</sc-for>
+</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0));display:flex;gap:10px">
+<div onClick="{{confirmDish}}" style="flex:1;height:54px;border-radius:999px;background:#c67139;color:#f5ead8;display:flex;align-items:center;justify-content:center;font:400 17px Caprasimo,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.16)">C'est parti</div>
+<div onClick="{{goResult}}" style="width:54px;height:54px;flex:none;border-radius:50%;border:1.5px solid rgba(32,30,29,.16);display:flex;align-items:center;justify-content:center;font-size:17px;color:#645c50;cursor:pointer">↻</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isSettings}}" hint-placeholder-val="{{false}}">
+<div style="flex:none;padding:6px 22px 8px;display:flex;align-items:center;gap:12px">
+<span onClick="{{goHome}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)">←</span>
+<span style="font:400 23px/1.05 Caprasimo,system-ui,sans-serif">Réglages</span>
+</div>
+<div class="scrl" style="padding:12px 22px 40px">
+<div style="font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a;margin-bottom:12px">Ce que l'app a retenu</div>
+<div style="padding:20px;border-radius:28px;background:#f9f4ed;box-shadow:0 1px 2px rgba(46,43,37,.1)">
+<sc-if value="{{noAffinity}}" hint-placeholder-val="{{true}}">
+<div style="font-size:13.5px;line-height:1.6;color:#645c50">Rien encore. Valide un plat et tes ingrédients récurrents remonteront ici — ils pèseront dans les propositions suivantes.</div>
+</sc-if>
+<sc-for list="{{affinities}}" as="a" hint-placeholder-count="0">
+<div style="margin-bottom:12px">
+<div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:5px"><span>{{a.name}}</span><span style="color:#82796a">{{a.n}}×</span></div>
+<div style="height:7px;border-radius:999px;background:rgba(32,30,29,.08);overflow:hidden"><div style="height:100%;border-radius:999px;background:#8fa073;width:{{a.pct}}"></div></div>
+</div>
+</sc-for>
+</div>
+<div style="font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a;margin:26px 0 12px">Propositions</div>
+<sc-for list="{{toggles}}" as="t" hint-placeholder-count="3">
+<div onClick="{{t.onClick}}" style="display:flex;align-items:center;gap:14px;padding:16px 18px;margin-bottom:10px;border-radius:24px;background:#f9f4ed;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.1)">
+<div style="flex:1">
+<div style="font-size:14.5px;font-weight:700">{{t.name}}</div>
+<div style="font-size:12.5px;color:#82796a;line-height:1.45;margin-top:2px">{{t.desc}}</div>
+</div>
+<div style="width:46px;height:27px;flex:none;border-radius:999px;background:{{t.trackBg}};padding:3px;display:flex;justify-content:{{t.justify}};align-items:center"><div style="width:21px;height:21px;border-radius:50%;background:#f9f4ed;box-shadow:0 1px 2px rgba(46,43,37,.25)"></div></div>
+</div>
+</sc-for>
+<div onClick="{{resetAll}}" style="margin-top:16px;height:50px;border-radius:999px;border:1.5px solid rgba(32,30,29,.16);display:flex;align-items:center;justify-content:center;font:700 14px Figtree,system-ui,sans-serif;color:#8c491a;cursor:pointer">Remettre toutes les envies à zéro</div>
+<div style="margin-top:14px;font-size:12px;line-height:1.6;color:#a19786">{{historyLine}}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isAdd}}" hint-placeholder-val="{{false}}">
+<div style="flex:none;padding:6px 22px 8px;display:flex;align-items:center;gap:12px">
+<span onClick="{{backFromAdd}}" style="width:38px;height:38px;flex:none;border-radius:50%;background:#f9f4ed;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;box-shadow:0 1px 2px rgba(46,43,37,.12)">←</span>
+<span style="font:400 23px/1.05 Caprasimo,system-ui,sans-serif">Ajouter un item</span>
+</div>
+<div class="scrl" style="padding:16px 22px 120px">
+<div style="font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a;margin-bottom:10px">Nom</div>
+<input value="{{newName}}" onChange="{{onNewName}}" placeholder="Aubergine grillée, pâtes au citron…" style="width:100%;box-sizing:border-box;height:48px;border-radius:999px;border:1.5px solid rgba(32,30,29,.14);background:#f9f4ed;padding:0 18px;font:400 15px Figtree,system-ui,sans-serif;color:#201e1d;outline:none">
+<div style="font:700 11.5px Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#82796a;margin:24px 0 10px">Catégorie</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{addCats}}" as="c" hint-placeholder-count="8">
+<span onClick="{{c.onClick}}" style="padding:9px 15px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;user-select:none;background:{{c.bg}};color:{{c.fg}};border:1.5px solid {{c.bc}}">{{c.name}}</span>
+</sc-for>
+</div>
+<div style="margin-top:26px;padding:18px;border-radius:24px;background:#f0fae1;font-size:13px;line-height:1.55;color:#3d472b">Les items ajoutés entrent dans le tirage comme les autres. Coche-les une fois pour dire que tu en as envie ce soir.</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0))">
+<div onClick="{{saveNew}}" style="height:54px;border-radius:999px;background:{{saveBg}};color:#f5ead8;display:flex;align-items:center;justify-content:center;font:400 17px Caprasimo,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.16)">Ajouter à ma liste</div>
+</div>
+</sc-if>
+
+</div></div>
+</div>
+</div>
+<p class="dv-next">Essaie : « le moteur propose trop de plats de la liste, mets plus d'inventions » · « ajoute un historique de la semaine » · « fais une version sombre »</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Écran principal — 3 directions</span></div>
+<p class="dv-intro">Même mécanique partout : un tap = <strong>envie</strong>, deux taps = <strong>pas envie</strong>, trois = neutre. Les écrans sont cliquables. Données réelles, triées du plus courant au plus rare. Dis-moi laquelle tient la route et j'en fais le flow complet (catégorie détaillée, résultat du soir, ajout, réglages).</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Listes dépliables. Tout dans un seul écran, on ouvre une catégorie à la fois. Le plus lisible, le plus proche d'une vraie liste de courses.</div>
+<div class="ph"><div class="ph-in">
+<div class="ph-sb"><span>20:41</span><span style="display:flex;align-items:center;gap:5px"><span style="display:flex;align-items:flex-end;gap:1.5px"><span style="width:3px;height:4px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:6px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:8px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:10px;border-radius:1px;background:#201e1d"></span></span><span style="width:20px;height:10px;border-radius:3px;border:1.2px solid #201e1d;padding:1.4px;display:flex"><span style="flex:1;border-radius:1.5px;background:#201e1d"></span></span></span></div>
+<div style="flex:none;padding:6px 22px 14px">
+<div style="font:400 27px/1.05 Caprasimo,system-ui,sans-serif;letter-spacing:-.015em">Qu'est ce qu'on mange ?</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#c67139;color:#f5ead8;font-size:12.5px;font-weight:700">✓ <span>{{aLabel}}</span></span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(32,30,29,.07);color:#645c50;font-size:12.5px;font-weight:600">✕ <span>{{aNoLabel}}</span></span>
+</div>
+</div>
+<div class="scrl" style="padding:0 22px 120px">
+<sc-for list="{{catsA}}" as="c" hint-placeholder-count="6">
+<div style="margin-bottom:10px;background:#f9f4ed;border-radius:28px;overflow:hidden;box-shadow:0 1px 2px rgba(46,43,37,.1)">
+<div onClick="{{c.onToggle}}" style="display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;user-select:none">
+<span style="width:31px;height:31px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;background:{{c.chipBg}}">{{c.emoji}}</span>
+<span style="flex:1;font:700 14.5px/1.25 Figtree,system-ui,sans-serif">{{c.name}}</span>
+<span style="font-size:12px;font-weight:700;color:{{c.cntFg}}">{{c.summary}}</span>
+<span style="font-size:11px;color:#a19786;transform:rotate({{c.rot}});display:inline-block">▼</span>
+</div>
+<sc-if value="{{c.open}}" hint-placeholder-val="{{true}}">
+<div style="padding:2px 16px 16px;border-top:1px solid rgba(32,30,29,.07);display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{c.items}}" as="it" hint-placeholder-count="12">
+<span onClick="{{it.onClick}}" style="padding:8px 13px;border-radius:999px;font-size:13.5px;font-weight:600;line-height:1.15;cursor:pointer;user-select:none;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}}</span>
+</sc-for>
+<sc-if value="{{c.hasMore}}" hint-placeholder-val="{{false}}">
+<span onClick="{{c.onOpenFull}}" style="padding:8px 13px;border-radius:999px;font-size:13.5px;font-weight:700;line-height:1.15;cursor:pointer;user-select:none;background:#f0fae1;color:#3d472b;border:1.5px solid #ccdbb2">{{c.moreLabel}}</span>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0))">
+<div onClick="{{goResult}}" style="height:54px;border-radius:999px;background:#c67139;color:#f5ead8;display:flex;align-items:center;justify-content:center;gap:8px;font:400 17px Caprasimo,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.16)">Trouver quoi manger</div>
+</div>
+</div></div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Nuage de pastilles. Une catégorie à la fois, onglets en haut, on mitraille les envies au pouce. Rapide, tactile, beaucoup d'items visibles d'un coup.</div>
+<div class="ph"><div class="ph-in">
+<div class="ph-sb"><span>20:41</span><span style="display:flex;align-items:center;gap:5px"><span style="display:flex;align-items:flex-end;gap:1.5px"><span style="width:3px;height:4px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:6px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:8px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:10px;border-radius:1px;background:#201e1d"></span></span><span style="width:20px;height:10px;border-radius:3px;border:1.2px solid #201e1d;padding:1.4px;display:flex"><span style="flex:1;border-radius:1.5px;background:#201e1d"></span></span></span></div>
+<div style="flex:none;padding:4px 0 10px">
+<div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px">
+<div style="font:400 25px/1.05 Caprasimo,system-ui,sans-serif;letter-spacing:-.015em">Ce soir,<br>j'ai envie de…</div>
+<div style="text-align:right;flex:none">
+<div style="font:400 30px/1 Caprasimo,system-ui,sans-serif;color:#c67139">{{bYes}}</div>
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#82796a">envies</div>
+</div>
+</div>
+<div style="display:flex;gap:8px;overflow-x:auto;padding:14px 22px 2px">
+<sc-for list="{{tabsB}}" as="t" hint-placeholder-count="6">
+<span onClick="{{t.onClick}}" style="flex:none;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;user-select:none;background:{{t.bg}};color:{{t.fg}};border:1.5px solid {{t.bc}}">{{t.name}}</span>
+</sc-for>
+</div>
+</div>
+<div class="scrl" style="padding:12px 22px 120px">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{itemsB}}" as="it" hint-placeholder-count="24">
+<span onClick="{{it.onClick}}" style="padding:9px 15px;border-radius:999px;font-size:14.5px;font-weight:600;cursor:pointer;user-select:none;line-height:1.2;background:{{it.bg}};color:{{it.fg}};border:1.5px {{it.bs}} {{it.bc}};text-decoration:{{it.td}}">{{it.name}}</span>
+</sc-for>
+</div>
+<div style="margin-top:22px;font-size:12px;color:#a19786">Tape une fois pour une envie, deux fois pour l'écarter.</div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:14px 22px 26px;background:linear-gradient(to top,#f5ead8 62%,rgba(245,234,216,0));display:flex;gap:10px">
+<div onClick="{{goResult}}" style="flex:1;height:54px;border-radius:999px;background:#c67139;color:#f5ead8;display:flex;align-items:center;justify-content:center;font:400 17px Caprasimo,system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 10px rgba(46,43,37,.16)">Proposer 3 plats</div>
+<div style="width:54px;height:54px;flex:none;border-radius:50%;border:1.5px solid rgba(32,30,29,.16);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer">＋</div>
+</div>
+</div></div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Tri à la carte. Un item à la fois, trois gros boutons, zéro réflexion. Le plus ludique — mais plus lent si la liste est longue.</div>
+<div class="ph"><div class="ph-in" style="background:#201e1d;color:#f5ead8">
+<div class="ph-sb" style="color:#f5ead8"><span>20:41</span><span style="display:flex;align-items:center;gap:5px"><span style="display:flex;align-items:flex-end;gap:1.5px"><span style="width:3px;height:4px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:6px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:8px;border-radius:1px;background:#201e1d"></span><span style="width:3px;height:10px;border-radius:1px;background:#201e1d"></span></span><span style="width:20px;height:10px;border-radius:3px;border:1.2px solid #201e1d;padding:1.4px;display:flex"><span style="flex:1;border-radius:1.5px;background:#201e1d"></span></span></span></div>
+<div style="flex:none;padding:6px 24px 0;display:flex;align-items:center;justify-content:space-between">
+<span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a19786">{{cProgress}}</span>
+<span onClick="{{goResult}}" style="font-size:12.5px;font-weight:700;color:#f6a06b;cursor:pointer">Passer au résultat →</span>
+</div>
+<div style="flex:none;height:4px;margin:12px 24px 0;border-radius:999px;background:rgba(245,234,216,.16);overflow:hidden">
+<div style="height:100%;border-radius:999px;background:#c67139;width:{{cPct}}"></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 28px;text-align:center;gap:18px">
+<span style="padding:6px 14px;border-radius:999px;background:rgba(245,234,216,.1);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ccdbb2">{{cCat}}</span>
+<div style="font:400 44px/1.02 Caprasimo,system-ui,sans-serif;letter-spacing:-.02em">{{cName}}</div>
+<div style="font-size:13.5px;color:#a19786;max-width:250px">{{cHint}}</div>
+</div>
+<div style="flex:none;padding:0 24px 12px;display:flex;align-items:center;justify-content:center;gap:16px">
+<div onClick="{{cNo}}" style="width:68px;height:68px;border-radius:50%;border:1.5px solid rgba(245,234,216,.25);display:flex;align-items:center;justify-content:center;font-size:26px;color:#c0b6a5;cursor:pointer">✕</div>
+<div onClick="{{cYes}}" style="flex:1;height:68px;border-radius:999px;background:#c67139;color:#f5ead8;display:flex;align-items:center;justify-content:center;gap:8px;font:400 19px Caprasimo,system-ui,sans-serif;cursor:pointer">✓ Envie</div>
+<div onClick="{{cSkip}}" style="width:68px;height:68px;border-radius:50%;border:1.5px solid rgba(245,234,216,.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#c0b6a5;cursor:pointer">Bof</div>
+</div>
+<div style="flex:none;padding:0 24px 26px">
+<div style="border-top:1px solid rgba(245,234,216,.14);padding-top:14px;display:flex;gap:8px;overflow-x:auto;min-height:34px;align-items:center">
+<sc-if value="{{cEmpty}}" hint-placeholder-val="{{true}}">
+<span style="font-size:12.5px;color:#82796a">Tes envies s'empileront ici.</span>
+</sc-if>
+<sc-for list="{{cPicked}}" as="p" hint-placeholder-count="4">
+<span style="flex:none;padding:6px 13px;border-radius:999px;background:rgba(198,113,57,.22);border:1px solid rgba(246,160,107,.5);color:#ffc6a5;font-size:12.5px;font-weight:600">{{p.name}}</span>
+</sc-for>
+</div>
+</div>
+</div></div>
+</div>
+
+</div>
+<p class="dv-next">Essaie : « je garde <a class="dv-oid" href="#1b">1b</a>, fais le flow complet » · « mets le tri de <a class="dv-oid" href="#1c">1c</a> en option dans <a class="dv-oid" href="#1a">1a</a> » · « montre-moi l'écran résultat »</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DATA = [
+  {id:'plats', name:'Plats génériques', emoji:'🍽', items:['Frites','Burger','Pad Thai','Cordon Bleu','Nuggets','Filets de poulet','Pizza','Couscous','Salade','Pates froides','Pates bolo','Pates carbo','Semoule ratatouille','Soupe','Purée','Pates poulet','Riz poisson','Tartiflette','Gratin dauphinois','Lentilles','Croque monsieur','Hot Dog','Fajitas','Tacos','Riz curry','Gratin','Gratin d\'aubergine','Oeufs au plat','Oeuf à la coque','Kebab','Wrap','Tenders','Nems','Mafé','Foutu','Sushi','Gyozas','Wok','Hachis Parmentier Canard','Saumon','Filet de cabillaud','Emanadas','Fish and chips','Brandade','Tempuras','Mac and cheese','Tomate farcies','Rosties','Soupe grattinée','Roti de boeuf','Roti de porc','Boeuf bourguignon','Lasagnes','Samosa','Hacras','Raviolis','Ribs','Escalope','Porc au caramel','Friands boeuf','Steak frites','Steak sauce au poivre','Poulet rôti','Poulet basquaise','Poulet tikka masala','Poulet teriyaki','Poulet katsu','Poulet satay','Blanquette de veau','Veau marengo','Côte de porc moutarde','Travers de porc caramélisés','Tajine de poulet','Tajine d’agneau','Moussaka','Chili con carne','Chili sin carne','Bœuf sauté aux légumes','Bœuf teriyaki','Bœuf mongol','Steak tartare','Carpaccio de bœuf','Boulettes de bœuf sauce tomate','Kefta','Poulet rôti pommes de terre','Poisson pané','Saumon teriyaki','Saumon à la crème','Saumon grillé','Cabillaud à la tomate','Cabillaud en papillote','Moules-frites','Moules marinières','Crevettes au curry','Crevettes à l’ail','Crevettes coco','Calamars à la romaine','Poke bowl','Chirashi','Ramen','Udon sautés','Bibimbap','Yakitori','Bao','Dim sum','Pad see ew','Pho','Curry japonais','Curry de légumes','Dahl de lentilles','Falafels avec riz','Shakshuka','Œufs cocotte','Omelette','Quiche lorraine','Quiche aux légumes','Tourte à la viande','Parmentier de saumon','Parmentier de bœuf','Gratin de courgettes','Gratin de chou-fleur','Gratin de pâtes','Gratin de fruits de mer','Cannellonis','Pâtes pesto','Pâtes 4 fromages','Pâtes arrabbiata','Pâtes aux champignons','Pâtes saumon crème','Risotto aux champignons','Risotto au poulet','Risotto aux fruits de mer','Paella','Arancini','Polenta crémeuse','Galettes de pommes de terre','Pommes de terre sautées avec œufs','Piadina','Quesadillas','Enchiladas','Burritos','Nachos gratinés','Empanadas au poulet','Pastilla au poulet','Poke saumon','Sandwich club','Bagel saumon','Panini','Croque-madame','Bruschetta','Welsh','Flammekueche','Galette bretonne','Raclette','Mont d’Or au four','Pot-au-feu','Cassoulet','Blanquette de poulet','Coq au vin','Bœuf-carottes','Potée','Quenelles sauce tomate','Andouillette','Saucisse-purée','Saucisse-lentilles']},
+  {id:'legumes', name:'Légumes', emoji:'🥕', items:['Carotte','Courgette','Aubergine','Tomate','Concombre','Poivron','Brocoli','Chou-fleur','Chou blanc','Chou rouge','Chou de Bruxelles','Épinards','Petit pois','Asperge','Artichaut','Poireau','Oignon','Ail','Échalote','Radis','Navet','Betterave','Panais','Céleri','Fenouil','Potiron','Courge butternut','Endive','Blette','Maïs','Salade','Olives','Champignon','Oignons frits']},
+  {id:'feculents', name:'Féculents & céréales', emoji:'🍚', items:['Riz','Semoule','Boulgour','Quinoa','Blé','Pomme de terre','Patate douce','Manioc','Igname','Topinambour','Spaghetti','Penne','Fusilli','Farfalle','Macaroni','Tagliatelles','Linguine','Fettuccine','Coquillettes','Conchiglie','Cannelloni','Lasagnes','Ravioli','Gnocchi','Udon']},
+  {id:'legumineuses', name:'Légumineuses', emoji:'🫘', items:['Lentilles vertes','Lentilles corail','Lentilles blondes','Pois chiches','Haricots rouges','Haricots blancs','Haricots mungo','Fèves','Soja','Edamame']},
+  {id:'epices', name:'Herbes & épices', emoji:'🌿', items:['Mexicaine','Basilic','Persil','Coriandre','Menthe','Ciboulette','Thym','Romarin','Origan','Aneth','Sauge','Fenouil','Paprika','Curry','Curcuma','Cumin','Cannelle','Muscade','Gingembre','Cardamome','Clou de girofle','Safran','Anis étoilé','Piment de Cayenne','Piment d\'Espelette','Poivre','Barbecue','Mélange quatre-épices','Ras el-hanout']},
+  {id:'sauces', name:'Crèmes, sauces & tartinades', emoji:'🥫', items:['Sauce tomate','Coulis de tomate','Sauce pesto','Pesto rosso','Sauce béchamel','Crème fraiche','Sauce au poivre','Sauce champignon','Sauce curry','Sauce moutarde','Sauce barbecue','Sauce burger','Sauce béarnaise','Sauce hollandaise','Sauce tartare','Sauce cocktail','Sauce soja','Sauce teriyaki','Sauce aigre-douce','Sauce chili','Sauce sriracha','Harissa','Tzatziki','Houmous','Guacamole','Tapenade d’olives','Caviar d’aubergine','Crème d’artichaut','Crème de poivron','Crème de courgette','Crème de champignon','Crème d’ail','Crème de feta','Fromage frais aux herbes','Rillettes de thon','Rillettes de saumon','Rillettes de poulet','Tarama','Caviar de tomates séchées','Beurre de cacahuète','Crème de marrons','Confit d’oignons','Moutarde','Mayonnaise','Ketchup','Sauce algérienne','Sauce andalouse','Sauce hamburger','Sauce onion cream']},
+  {id:'viandes', name:'Viandes, fruits de mer, poisson', emoji:'🍗', items:['Poulet','Dinde','Bœuf','Veau','Porc','Agneau','Canard','Steak haché','Bavette','Entrecôte','Faux-filet','Filet mignon','Côte de porc','Côte d’agneau','Escalope de poulet','Escalope de dinde','Jambon blanc','Jambon cru','Bacon','Saumon','Thon','Cabillaud','Anchois','Lieu noir','Crevettes','Gambas','Moules','Calamar','Poulpe','Noix de Saint-Jacques','Œufs','Tofu','Jambon de poulet','Jambon de dinde','Saucisse','Merguez','Boulettes de viande','Surimi','Chorizo','Rosette','Fromage']},
+  {id:'aperofroid', name:'Apéro froid', emoji:'🫒', items:['Olives vertes','Olives noires','Tomates cerises','Billes de mozzarella','Feta en dés','Dés de comté','Dés de cheddar','Roulés de jambon au fromage frais','Roulés de saumon fumé','Bouchées de concombre au fromage frais','Brochettes tomate-mozzarella','Brochettes de melon et jambon cru','Avocat en bouchées','Radis au fromage frais','Champignons farcis froids','Artichauts marinés','Poivrons marinés','Aubergines grillées marinées','Cœurs de palmier','Maïs grillé','Houmous avec crudités','Guacamole avec crudités','Tapenade avec légumes']},
+  {id:'aperochaud', name:'Apéro chaud', emoji:'🔥', items:['Mini-feuilletés au fromage','Mini-feuilletés au pesto','Mini-quiches','Mini-pizzas','Mini-croque-monsieur','Gougères au fromage','Champignons farcis','Poivrons farcis','Courgettes grillées','Aubergines grillées','Mozzarella sticks','Halloumi grillé','Camembert rôti','Brie rôti','Mini-saucisses grillées','Boulettes de viande','Ailes de poulet','Nuggets de poulet','Crevettes à l\'ail','Crevettes panées','Calamars frits','Falafels','Samoussas','Nems','Accras de morue','Onion Rings']}
+];
+
+const DISHES = [
+  {n:'Pâtes bolo', t:['Spaghetti','Bœuf','Sauce tomate','Oignon','Carotte']},
+  {n:'Pâtes carbo', t:['Spaghetti','Bacon','Crème fraiche','Œufs','Fromage']},
+  {n:'Pizza', t:['Sauce tomate','Fromage','Origan','Champignon']},
+  {n:'Burger', t:['Steak haché','Fromage','Oignon','Sauce burger','Frites']},
+  {n:'Poulet rôti', t:['Poulet','Pomme de terre','Thym','Ail']},
+  {n:'Lasagnes', t:['Lasagnes','Bœuf','Sauce tomate','Sauce béchamel','Fromage']},
+  {n:'Gratin dauphinois', t:['Pomme de terre','Crème fraiche','Ail','Muscade','Fromage']},
+  {n:'Tartiflette', t:['Pomme de terre','Bacon','Oignon','Fromage','Crème fraiche']},
+  {n:'Couscous', t:['Semoule','Poulet','Merguez','Carotte','Courgette','Pois chiches','Ras el-hanout']},
+  {n:'Chili con carne', t:['Bœuf','Haricots rouges','Sauce tomate','Poivron','Cumin','Riz']},
+  {n:'Dahl de lentilles', t:['Lentilles corail','Curry','Oignon','Curcuma','Riz','Gingembre']},
+  {n:'Risotto aux champignons', t:['Riz','Champignon','Crème fraiche','Fromage','Échalote']},
+  {n:'Curry de légumes', t:['Curry','Courgette','Poivron','Carotte','Riz','Curcuma']},
+  {n:'Poulet tikka masala', t:['Poulet','Curry','Crème fraiche','Riz','Gingembre','Coriandre']},
+  {n:'Poulet basquaise', t:['Poulet','Poivron','Tomate','Oignon','Riz','Paprika']},
+  {n:'Blanquette de veau', t:['Veau','Crème fraiche','Carotte','Champignon','Riz']},
+  {n:'Bœuf bourguignon', t:['Bœuf','Carotte','Oignon','Champignon','Thym','Pomme de terre']},
+  {n:'Hachis Parmentier Canard', t:['Canard','Pomme de terre','Oignon','Fromage']},
+  {n:'Moussaka', t:['Aubergine','Bœuf','Sauce tomate','Sauce béchamel','Origan']},
+  {n:'Ratatouille & semoule', t:['Aubergine','Courgette','Poivron','Tomate','Semoule','Thym']},
+  {n:'Shakshuka', t:['Œufs','Tomate','Poivron','Oignon','Cumin','Paprika']},
+  {n:'Quiche lorraine', t:['Œufs','Bacon','Crème fraiche','Fromage']},
+  {n:'Croque monsieur', t:['Jambon blanc','Fromage','Sauce béchamel']},
+  {n:'Poke bowl', t:['Riz','Saumon','Avocat en bouchées','Concombre','Sauce soja','Edamame']},
+  {n:'Ramen', t:['Udon','Poulet','Œufs','Sauce soja','Gingembre','Champignon']},
+  {n:'Pad Thai', t:['Udon','Crevettes','Œufs','Beurre de cacahuète','Sauce soja']},
+  {n:'Gyozas', t:['Porc','Chou blanc','Gingembre','Sauce soja']},
+  {n:'Sushi', t:['Riz','Saumon','Concombre','Avocat en bouchées','Sauce soja']},
+  {n:'Wok de bœuf aux légumes', t:['Bœuf','Poivron','Brocoli','Sauce soja','Riz','Gingembre']},
+  {n:'Tacos', t:['Poulet','Sauce algérienne','Fromage','Frites','Oignon']},
+  {n:'Fajitas', t:['Poulet','Poivron','Oignon','Mexicaine','Fromage']},
+  {n:'Quesadillas', t:['Fromage','Poulet','Poivron','Guacamole']},
+  {n:'Moules-frites', t:['Moules','Frites','Échalote','Persil','Crème fraiche']},
+  {n:'Saumon grillé', t:['Saumon','Riz','Citron','Aneth','Brocoli']},
+  {n:'Cabillaud en papillote', t:['Cabillaud','Courgette','Tomate','Thym','Pomme de terre']},
+  {n:'Crevettes au curry', t:['Crevettes','Curry','Riz','Crème fraiche','Coriandre']},
+  {n:'Paella', t:['Riz','Poulet','Crevettes','Moules','Poivron','Safran']},
+  {n:'Pâtes pesto', t:['Penne','Sauce pesto','Fromage','Basilic']},
+  {n:'Pâtes aux champignons', t:['Tagliatelles','Champignon','Crème fraiche','Ail','Persil']},
+  {n:'Pâtes saumon crème', t:['Tagliatelles','Saumon','Crème fraiche','Aneth']},
+  {n:'Mac and cheese', t:['Macaroni','Fromage','Sauce béchamel','Muscade']},
+  {n:'Gratin de courgettes', t:['Courgette','Crème fraiche','Fromage','Œufs']},
+  {n:'Tomates farcies', t:['Tomate','Bœuf','Riz','Oignon','Persil']},
+  {n:'Soupe de légumes', t:['Carotte','Poireau','Pomme de terre','Oignon','Céleri']},
+  {n:'Omelette', t:['Œufs','Fromage','Champignon','Ciboulette']},
+  {n:'Raclette', t:['Fromage','Pomme de terre','Jambon cru','Rosette','Olives vertes']},
+  {n:'Falafels avec riz', t:['Pois chiches','Coriandre','Cumin','Riz','Tzatziki']},
+  {n:'Tajine de poulet', t:['Poulet','Olives','Carotte','Ras el-hanout','Semoule']},
+  {n:'Steak frites', t:['Bavette','Frites','Sauce au poivre']},
+  {n:'Saucisse-lentilles', t:['Saucisse','Lentilles vertes','Carotte','Oignon','Thym']}
+];
+
+const ALL_DISHES = DISHES.concat(
+  DATA[0].items.filter(n => !DISHES.some(d => d.n === n)).map(n => ({ n, t:[] }))
+);
+
+const TPL = [
+  (p,f,l,s,h) => p && f ? p + ' ' + (h ? 'au ' + h.toLowerCase() : 'rôti') + ', ' + f.toLowerCase() : null,
+  (p,f,l,s,h) => p && l ? p + ' sauté aux ' + l.toLowerCase() : null,
+  (p,f,l,s,h) => p && s ? p + ' ' + s.toLowerCase().replace(/^sauce /, 'sauce ') + (f ? ', ' + f.toLowerCase() : '') : null,
+  (p,f,l,s,h) => f && l ? 'Poêlée de ' + f.toLowerCase() + ' et ' + l.toLowerCase() : null,
+  (p,f,l,s,h) => l && s ? l + ' rôti' + ', ' + s.toLowerCase() : null,
+  (p,f,l,s,h) => p && l && h ? 'Mijoté de ' + p.toLowerCase() + ' aux ' + l.toLowerCase() + ' et ' + h.toLowerCase() : null
+];
+
+const HINTS = {0:'Neutre pour l’instant.',1:'Dans tes envies.',2:'Écarté pour ce soir.'};
+
+class Component extends DCLogic {
+  state = { picks:{}, openCat:'plats', tab:'plats', idx:0,
+    screen:'home', openCat2:'plats', catId:'plats', query:'', filter:'Tout',
+    custom:{}, newName:'', newCat:'plats', proposals:null, chosen:null, hQuery:'', panel:null,
+    history:[], invent:true, avoidRecent:true, toast:'' };
+
+  cats() {
+    return DATA.map(c => Object.assign({}, c, { items: c.items.concat(this.state.custom[c.id] || []) }));
+  }
+  catOf(name) { const c = this.cats().find(c => c.items.indexOf(name) >= 0); return c ? c.id : null; }
+  yesSet() {
+    const s = {};
+    for (const k in this.state.picks) if (k.indexOf('p|') === 0 && this.state.picks[k] === 1) s[k.slice(2)] = 1;
+    return s;
+  }
+  noSet() {
+    const s = {};
+    for (const k in this.state.picks) if (k.indexOf('p|') === 0 && this.state.picks[k] === 2) s[k.slice(2)] = 1;
+    return s;
+  }
+  affinity() {
+    const a = {};
+    this.state.history.forEach(h => h.tags.forEach(t => { a[t] = (a[t] || 0) + 1; }));
+    return a;
+  }
+  pickBy(catId, yes) {
+    const c = this.cats().find(c => c.id === catId);
+    const hit = c.items.filter(n => yes[n]);
+    return hit.length ? hit[Math.floor(Math.random() * hit.length)] : null;
+  }
+
+  makeProposals() {
+    const yes = this.yesSet(), no = this.noSet(), aff = this.affinity();
+    const recent = this.state.avoidRecent ? this.state.history.slice(-4).map(h => h.name) : [];
+    const out = ALL_DISHES
+      .filter(d => !no[d.n] && !d.t.some(t => no[t]) && recent.indexOf(d.n) < 0)
+      .map(d => {
+        const hits = d.t.filter(t => yes[t]);
+        const bonus = d.t.reduce((s, t) => s + Math.min(aff[t] || 0, 3) * 1.2, 0);
+        return { name:d.n, tags:d.t, kind:'De ta liste', hits, self:!!yes[d.n],
+          score:(yes[d.n] ? 7 : 0) + hits.length * 3 + bonus + Math.random() * 1.6 };
+      })
+      .sort((a, b) => b.score - a.score);
+    const gated = out.filter(d => d.score > 1.6);
+    const base = gated.length >= 3 ? gated : out;
+
+    const invented = [];
+    if (this.state.invent) {
+      const p = this.pickBy('viandes', yes), f = this.pickBy('feculents', yes),
+            l = this.pickBy('legumes', yes), s = this.pickBy('sauces', yes), h = this.pickBy('epices', yes);
+      const seen = {};
+      TPL.forEach(fn => {
+        const n = fn(p, f, l, s, h);
+        if (!n || seen[n]) return;
+        seen[n] = 1;
+        const tags = [p, f, l, s, h].filter(x => x && n.toLowerCase().indexOf(x.toLowerCase()) >= 0);
+        invented.push({ name:n.charAt(0).toUpperCase() + n.slice(1), tags, hits:tags, kind:'Inventé',
+          score: tags.length * 3.4 + Math.random() * 2 });
+      });
+      invented.sort((a, b) => b.score - a.score);
+    }
+    const merged = base.slice(0, 4).concat(invented.slice(0, 2)).sort((a, b) => b.score - a.score);
+    const seenN = {};
+    return merged.filter(d => (seenN[d.name] ? false : (seenN[d.name] = 1))).slice(0, 3);
+  }
+
+  appVals() {
+    const S = this.state, yes = this.yesSet(), no = this.noSet();
+    const cats = this.cats();
+    const nYes = Object.keys(yes).length, nNo = Object.keys(no).length;
+
+    const catsP = cats.map(c => {
+      const open = S.openCat2 === c.id;
+      const y = c.items.filter(n => yes[n]).length;
+      return { id:c.id, name:c.name, emoji:c.emoji, open, rot: open ? '180deg' : '0deg',
+        chipBg: y ? '#ffe1d0' : 'rgba(32,30,29,.06)', summary: y ? y + ' ✓' : '',
+        onToggle: () => this.setState(s => ({ openCat2: s.openCat2 === c.id ? null : c.id })),
+        onOpenFull: () => this.setState({ screen:'cat', catId:c.id, query:'', filter:'Tout' }),
+        hasMore: c.items.length > 14,
+        moreLabel: '+ ' + (c.items.length - 14) + ' autres →',
+        items: c.items.filter((n, i) => i < 14 || yes[n] || no[n]).map(n => {
+          const id = n;
+          return Object.assign({ id, name:n, onClick: () => this.cycle('p', id) }, this.skin(this.get('p', id)));
+        }) };
+    });
+
+    const hq = S.hQuery.trim().toLowerCase();
+    const all = [];
+    cats.forEach(c => c.items.forEach(n => { if (all.indexOf(n) < 0) all.push(n); }));
+    const matches = hq ? all.filter(n => n.toLowerCase().indexOf(hq) >= 0) : [];
+    const mk = n => Object.assign({ id:n, name:n, onClick: () => this.cycle('p', n) }, this.skin(this.get('p', n)));
+    const clr = n => Object.assign({ id:n, name:n, onClear: () => this.setState(s => {
+      const p = Object.assign({}, s.picks); delete p['p|' + n]; return { picks:p, proposals:null };
+    }) }, this.skin(this.get('p', n)));
+    const panelNames = S.panel ? all.filter(n => (S.panel === 'yes' ? yes[n] : no[n])) : [];
+
+    const cat = cats.find(c => c.id === S.catId) || cats[0];
+    const q = S.query.trim().toLowerCase();
+    const catItems = cat.items
+      .filter(n => !q || n.toLowerCase().indexOf(q) >= 0)
+      .filter(n => S.filter === 'Tout' || (S.filter === 'Envies' ? yes[n] : !yes[n] && !no[n]))
+      .map(mk);
+    const filters = ['Tout', 'Envies', 'Pas encore vus'].map(f => ({
+      name:f, bg: S.filter === f ? '#201e1d' : 'transparent', fg: S.filter === f ? '#f5ead8' : '#645c50',
+      bc: S.filter === f ? '#201e1d' : 'rgba(32,30,29,.16)', onClick: () => this.setState({ filter:f }) }));
+
+    const props = S.proposals || [];
+    const proposals = props.map((p, i) => ({
+      name:p.name, kind:p.kind, rank: i === 0 ? (nYes ? 'Le plus proche de tes envies' : 'Au hasard') : '',
+      why: p.self ? 'Tu l’as coché toi-même.' : p.hits.length ? 'Parce que tu as envie de ' + p.hits.slice(0, 4).join(', ').toLowerCase() + '.'
+        : 'Une valeur sûre, rien de ce que tu as écarté dedans.',
+      cardBg: p.kind === 'Inventé' ? '#f0fae1' : '#f9f4ed',
+      cardBc: p.kind === 'Inventé' ? '#ccdbb2' : 'rgba(32,30,29,.08)',
+      tagBg: p.kind === 'Inventé' ? '#7a8a5e' : '#ffe1d0',
+      tagFg: p.kind === 'Inventé' ? '#f0fae1' : '#8c491a',
+      onClick: () => this.setState({ screen:'dish', chosen:p })
+    }));
+
+    const d = S.chosen || { name:'', tags:[], hits:[] };
+    const slug = encodeURIComponent(d.name);
+    const recipes = d.name ? [
+      { site:'Marmiton', initial:'M', label:'Recettes notées par la communauté',
+        href:'https://www.marmiton.org/recettes/recherche.aspx?aqt=' + slug },
+      { site:'CuisineAZ', initial:'C', label:'Fiches détaillées, pas à pas',
+        href:'https://www.cuisineaz.com/recettes/recherche_v2.aspx?recherche=' + slug },
+      { site:'750g', initial:'7', label:'Versions rapides et variantes',
+        href:'https://www.750g.com/recherche.htm?q=' + slug }
+    ] : [];
+    const dishSlotId = 'dish-' + d.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const dishTags = d.tags.map(t => ({ name:t,
+      bg: yes[t] ? '#c67139' : '#f9f4ed', fg: yes[t] ? '#f5ead8' : '#201e1d',
+      bc: yes[t] ? '#c67139' : 'rgba(32,30,29,.14)' }));
+
+    const aff = this.affinity();
+    const affList = Object.keys(aff).sort((a, b) => aff[b] - aff[a]).slice(0, 6);
+    const max = affList.length ? aff[affList[0]] : 1;
+    const affinities = affList.map(n => ({ name:n, n:aff[n], pct: Math.round((aff[n] / max) * 100) + '%' }));
+
+    const tgl = (key, name, desc) => ({ name, desc,
+      trackBg: S[key] ? '#7a8a5e' : 'rgba(32,30,29,.16)', justify: S[key] ? 'flex-end' : 'flex-start',
+      onClick: () => this.setState(s => ({ [key]: !s[key], proposals:null })) });
+
+    return {
+      isHome: S.screen === 'home', isCat: S.screen === 'cat', isResult: S.screen === 'result',
+      isDish: S.screen === 'dish', isSettings: S.screen === 'settings', isAdd: S.screen === 'add',
+      catsP, pYes:nYes, pNo:nNo,
+      hQuery:S.hQuery, onHQuery: e => this.setState({ hQuery:e.target.value, panel:null }),
+      hSearching: !!hq, hResults: matches.slice(0, 60).map(mk),
+      hCount: matches.length ? matches.length + (matches.length > 1 ? ' résultats' : ' résultat') : 'Aucun résultat',
+      showCats: !hq && !S.panel, hPanel: !hq && !!S.panel,
+      togYes: () => this.setState(s => ({ panel: s.panel === 'yes' ? null : 'yes', hQuery:'' })),
+      togNo: () => this.setState(s => ({ panel: s.panel === 'no' ? null : 'no', hQuery:'' })),
+      yesChipBg: S.panel === 'yes' ? '#8c491a' : '#c67139', yesChipFg:'#f5ead8',
+      yesChipBc: S.panel === 'yes' ? '#8c491a' : '#c67139',
+      noChipBg: S.panel === 'no' ? '#201e1d' : 'transparent',
+      noChipFg: S.panel === 'no' ? '#f5ead8' : '#645c50',
+      noChipBc: S.panel === 'no' ? '#201e1d' : 'rgba(32,30,29,.18)',
+      panelItems: panelNames.map(clr), panelEmpty: !!S.panel && panelNames.length === 0,
+      panelHint: S.panel === 'yes' ? 'Tape un item pour retirer l’envie.' : 'Tape un item pour le remettre en jeu.',
+      panelEmptyText: S.panel === 'yes' ? 'Aucune envie cochée pour l’instant.' : 'Tu n’as rien écarté.',
+      clearPanel: () => this.setState(s => {
+        const p = Object.assign({}, s.picks);
+        panelNames.forEach(n => { delete p['p|' + n]; });
+        return { picks:p, panel:null, proposals:null };
+      }),
+      yesLabel: nYes + (nYes > 1 ? ' envies' : ' envie'), noLabel: nNo + (nNo > 1 ? ' exclus' : ' exclu'),
+      aLabel: this.count('a',1) + (this.count('a',1) > 1 ? ' envies' : ' envie'), aNoLabel: this.count('a',2) + (this.count('a',2) > 1 ? ' exclus' : ' exclu'),
+      goHome: () => this.setState({ screen:'home' }),
+      goSettings: () => this.setState({ screen:'settings' }),
+      goResult: () => this.setState(s => ({ screen:'result', proposals: s.proposals || this.makeProposals() })),
+      reroll: () => this.setState({ proposals: this.makeProposals() }),
+      goAdd: () => this.setState({ screen:'add', newCat:S.catId, newName:'' }),
+      backFromAdd: () => this.setState({ screen:'cat' }),
+      catName:cat.name, catItems, filters, catEmpty: catItems.length === 0,
+      query:S.query, onQuery: e => this.setState({ query:e.target.value }),
+      proposals, noProposals: props.length === 0,
+      resultIntro: nYes ? (nYes > 1 ? 'Trois pistes à partir de tes ' + nYes + ' envies cochées.' : 'Trois pistes à partir de ton envie cochée.') : 'Rien de coché — voilà trois idées au hasard.',
+      dishName:d.name, dishTags, recipes, dishSlotId,
+      dishWhy: d.hits && d.hits.length ? 'Tu avais coché ' + d.hits.join(', ').toLowerCase() + '.' : 'Choisi dans tes habitudes.',
+      confirmDish: () => this.setState(s => ({
+        screen:'home', proposals:null,
+        history: s.history.concat([{ name:d.name, tags:d.tags }]),
+        toast: d.name + ' — noté pour ce soir' })),
+      hasToast: !!S.toast, toast:S.toast,
+      affinities, noAffinity: affinities.length === 0,
+      toggles: [
+        tgl('invent', 'Inventer des plats', 'Compose aussi des plats hors liste à partir de tes envies.'),
+        tgl('avoidRecent', 'Éviter les répétitions', 'Écarte les plats validés ces derniers jours.')
+      ],
+      historyLine: S.history.length ? S.history.length + (S.history.length > 1 ? ' plats validés : ' : ' plat validé : ') + S.history.map(h => h.name).join(', ') : 'Aucun plat validé pour l’instant.',
+      resetAll: () => this.setState(s => {
+        const p = {};
+        for (const k in s.picks) if (k.indexOf('p|') !== 0) p[k] = s.picks[k];
+        return { picks:p, proposals:null, toast:'' };
+      }),
+      newName:S.newName, onNewName: e => this.setState({ newName:e.target.value }),
+      addCats: cats.map(c => ({ name:c.name, bg: S.newCat === c.id ? '#201e1d' : '#f9f4ed',
+        fg: S.newCat === c.id ? '#f5ead8' : '#201e1d',
+        bc: S.newCat === c.id ? '#201e1d' : 'rgba(32,30,29,.14)',
+        onClick: () => this.setState({ newCat:c.id }) })),
+      saveBg: S.newName.trim() ? '#c67139' : '#c0b6a5',
+      saveNew: () => {
+        const n = S.newName.trim();
+        if (!n) return;
+        this.setState(s => ({
+          custom: Object.assign({}, s.custom, { [s.newCat]: (s.custom[s.newCat] || []).concat([n]) }),
+          picks: Object.assign({}, s.picks, { ['p|' + n]: 1 }),
+          screen:'cat', catId:s.newCat, query:'', filter:'Tout', newName:'', proposals:null }));
+      }
+    };
+  }
+
+  cycle(v, id) {
+    const k = v + '|' + id;
+    this.setState(s => ({ picks: { ...s.picks, [k]: ((s.picks[k] || 0) + 1) % 3 }, toast:'', proposals:null }));
+  }
+  get(v, id) { return this.state.picks[v + '|' + id] || 0; }
+
+  skin(st) {
+    if (st === 1) return { bg:'#c67139', fg:'#f5ead8', rowFg:'#8c491a', bc:'#c67139', bs:'solid', td:'none',
+      dotBg:'#c67139', dotBc:'#c67139', dotFg:'#f5ead8', mark:'✓', rowW:700 };
+    if (st === 2) return { bg:'transparent', fg:'#a19786', rowFg:'#a19786', bc:'#dcd3c4', bs:'dashed', td:'line-through',
+      dotBg:'transparent', dotBc:'#dcd3c4', dotFg:'#a19786', mark:'✕', rowW:500 };
+    return { bg:'#f9f4ed', fg:'#201e1d', rowFg:'#201e1d', bc:'rgba(32,30,29,.16)', bs:'solid', td:'none',
+      dotBg:'transparent', dotBc:'rgba(32,30,29,.18)', dotFg:'transparent', mark:'·', rowW:500 };
+  }
+
+  count(v, st) {
+    let n = 0;
+    for (const k in this.state.picks) if (k.indexOf(v + '|') === 0 && this.state.picks[k] === st) n++;
+    return n;
+  }
+
+  queue() {
+    const q = [];
+    DATA.forEach(c => c.items.slice(0, 6).forEach(n => q.push({ cat:c.name, name:n, id:c.id + ':' + n })));
+    return q;
+  }
+
+  renderVals() {
+    const S = this.state;
+    const catsA = DATA.map(c => {
+      const open = S.openCat === c.id;
+      const yes = c.items.filter(n => this.get('a', c.id + ':' + n) === 1).length;
+      return {
+        id:c.id, name:c.name, emoji:c.emoji, open, rot: open ? '180deg' : '0deg',
+        chipBg: yes ? '#ffe1d0' : 'rgba(32,30,29,.06)',
+        summary: yes ? yes + ' ✓' : '',
+        cntFg:'#b2622d',
+        onToggle: () => this.setState(s => ({ openCat: s.openCat === c.id ? null : c.id })),
+        items: c.items.map(n => {
+          const id = c.id + ':' + n;
+          return Object.assign({ id, name:n, onClick: () => this.cycle('a', id) }, this.skin(this.get('a', id)));
+        })
+      };
+    });
+
+    const tabsB = DATA.map(c => ({
+      id:c.id, name:c.name.split(' ')[0].replace(',', ''),
+      bg: S.tab === c.id ? '#201e1d' : 'transparent',
+      fg: S.tab === c.id ? '#f5ead8' : '#645c50',
+      bc: S.tab === c.id ? '#201e1d' : 'rgba(32,30,29,.16)',
+      onClick: () => this.setState({ tab: c.id })
+    }));
+    const cat = DATA.find(c => c.id === S.tab) || DATA[0];
+    const itemsB = cat.items.map(n => {
+      const id = cat.id + ':' + n;
+      return Object.assign({ id, name:n, onClick: () => this.cycle('b', id) }, this.skin(this.get('b', id)));
+    });
+
+    const q = this.queue();
+    const cur = q[Math.min(S.idx, q.length - 1)];
+    const picked = [];
+    for (const k in S.picks) if (k.indexOf('c|') === 0 && S.picks[k] === 1) picked.push({ id:k, name:k.split(':')[1] });
+    const advance = (st) => this.setState(s => ({
+      picks: { ...s.picks, ['c|' + cur.id]: st },
+      idx: Math.min(s.idx + 1, q.length - 1)
+    }));
+
+    return Object.assign(this.appVals(), {
+      catsA, aYes:this.count('a',1), aNo:this.count('a',2),
+      tabsB, itemsB, bYes:this.count('b',1),
+      cCat:cur.cat, cName:cur.name, cHint:HINTS[this.get('c', cur.id)],
+      cProgress:(S.idx + 1) + ' / ' + q.length,
+      cPct: Math.round(((S.idx + 1) / q.length) * 100) + '%',
+      cPicked:picked.slice(-12).reverse(), cEmpty: picked.length === 0,
+      cYes:() => advance(1), cNo:() => advance(2), cSkip:() => advance(0)
+    });
+  }
+}
+
+</script>
+</body>
+</html>

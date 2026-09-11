@@ -1,0 +1,426 @@
+- Légumes
+
+Carotte
+Courgette
+Aubergine
+Tomate
+Concombre
+Poivron
+Brocoli
+Chou-fleur
+Chou blanc
+Chou rouge
+Chou de Bruxelles
+Épinards
+Petit pois
+Asperge
+Artichaut
+Poireau
+Oignon
+Ail
+Échalote
+Radis
+Navet
+Betterave
+Panais
+Céleri
+Fenouil
+Potiron
+Courge butternut
+Endive
+Blette
+Maïs
+Salade
+Olives
+Champignon
+Oignons frits
+
+-Féculents / céréales
+Riz
+Semoule
+Boulgour
+Quinoa
+Blé
+Pomme de terre
+Patate douce
+Manioc
+Igname
+Topinambour
+Spaghetti
+Penne
+Fusilli
+Farfalle
+Macaroni
+Tagliatelles
+Linguine
+Fettuccine
+Coquillettes
+Conchiglie
+Cannelloni
+Lasagnes
+Ravioli
+Gnocchi
+Udon
+
+- Légumineuses
+Lentilles vertes
+Lentilles corail
+Lentilles blondes
+Pois chiches
+Haricots rouges
+Haricots blancs
+Haricots mungo
+Fèves
+Soja
+Edamame
+
+
+- Herbes et épices
+
+Mexicaine
+Basilic
+Persil
+Coriandre
+Menthe
+Ciboulette
+Thym
+Romarin
+Origan
+Aneth
+Sauge
+Fenouil
+Paprika
+Curry
+Curcuma
+Cumin
+Cannelle
+Muscade
+Gingembre
+Cardamome
+Clou de girofle
+Safran
+Anis étoilé
+Piment de Cayenne
+Piment d'Espelette
+Poivre 
+Barbecue
+Mélange quatre-épices
+Ras el-hanout
+
+-Crèmes, sauces & tartinades
+Sauce tomate
+Coulis de tomate
+Sauce pesto
+Pesto rosso
+Sauce béchamel
+Crème fraiche
+Sauce au poivre
+Sauce champignon
+Sauce curry
+Sauce moutarde
+Sauce barbecue
+Sauce burger
+Sauce béarnaise
+Sauce hollandaise
+Sauce tartare
+Sauce cocktail
+Sauce soja
+Sauce teriyaki
+Sauce aigre-douce
+Sauce chili
+Sauce sriracha
+Harissa
+Tzatziki
+Houmous
+Guacamole
+Tapenade d’olives
+Caviar d’aubergine
+Crème d’artichaut
+Crème de poivron
+Crème de courgette
+Crème de champignon
+Crème d’ail
+Crème de feta
+Fromage frais aux herbes
+Rillettes de thon
+Rillettes de saumon
+Rillettes de poulet
+Tarama
+Caviar de tomates séchées
+Beurre de cacahuète
+Crème de marrons
+Confit d’oignons
+Moutarde
+Mayonnaise
+Ketchup
+Sauce algérienne
+Sauce andalouse
+Sauce hamburger
+Sauce onion cream
+
+
+
+-Viandes, Fruits de mer, Poisson
+Poulet
+Dinde
+Bœuf
+Veau
+Porc
+Agneau
+Canard
+Steak haché
+Bavette
+Entrecôte
+Faux-filet
+Filet mignon
+Côte de porc
+Côte d’agneau
+Escalope de poulet
+Escalope de dinde
+Jambon blanc
+Jambon cru
+Bacon
+Saumon
+Thon
+Cabillaud
+Anchois
+Lieu noir
+Crevettes
+Gambas
+Moules
+Calamar
+Poulpe
+Noix de Saint-Jacques
+Œufs
+Tofu
+Jambon de poulet
+Jambon de dinde
+Saucisse
+Merguez
+Boulettes de viande
+Surimi
+Chorizo
+Rosette
+Fromage
+
+-Apéro froid
+Olives vertes
+Olives noires
+Tomates cerises
+Billes de mozzarella
+Feta en dés
+Dés de comté
+Dés de cheddar
+Roulés de jambon au fromage frais
+Roulés de saumon fumé
+Bouchées de concombre au fromage frais
+Brochettes tomate-mozzarella
+Brochettes de melon et jambon cru
+Avocat en bouchées
+Radis au fromage frais
+Champignons farcis froids
+Artichauts marinés
+Poivrons marinés
+Aubergines grillées marinées
+Cœurs de palmier
+Maïs grillé
+Houmous avec crudités
+Guacamole avec crudités
+Tapenade avec légumes
+
+- Apéro chaud
+Mini-feuilletés au fromage
+Mini-feuilletés au pesto
+Mini-quiches
+Mini-pizzas
+Mini-croque-monsieur
+Gougères au fromage
+Champignons farcis
+Poivrons farcis
+Courgettes grillées
+Aubergines grillées
+Mozzarella sticks
+Halloumi grillé
+Camembert rôti
+Brie rôti
+Mini-saucisses grillées
+Boulettes de viande
+Ailes de poulet
+Nuggets de poulet
+Crevettes à l'ail
+Crevettes panées
+Calamars frits
+Falafels
+Samoussas
+Nems
+Accras de morue
+Onion Rings
+
+- Plats génériques :
+
+Frites
+Burger
+Pad Thai
+Cordon Bleu
+Nuggets
+Filets de poulet
+Pizza
+Couscous
+Salade
+Pates froides
+Pates bolo
+Pates carbo
+Semoule ratatouille
+Soupe
+Purée
+Pates poulet
+Riz poisson
+Tartiflette
+Gratin dauphinois
+Lentilles
+Croque monsieur
+Hot Dog
+Fajitas
+Tacos
+Riz curry
+Gratin 
+Gratin d'aubergine
+Oeufs au plat
+Oeuf à la coque
+Kebab
+Wrap
+Tenders
+Nems
+Mafé
+Foutu
+Sushi
+Gyozas
+Wok
+Salade
+Hachis Parmentier Canard
+Saumon
+Filet de cabillaud
+Emanadas
+Fish and chips
+Brandade
+Tempuras
+Mac and cheese
+Tomate farcies
+Rosties
+Soupe grattinée
+Roti de boeuf
+Roti de porc
+Boeuf bourguignon
+Lasagnes
+Samosa
+Hacras
+Raviolis
+Ribs
+Escalope
+Porc au caramel
+Friands boeuf
+Steak frites
+Steak sauce au poivre
+Poulet rôti
+Poulet basquaise
+Poulet tikka masala
+Poulet teriyaki
+Poulet katsu
+Poulet satay
+Blanquette de veau
+Veau marengo
+Côte de porc moutarde
+Travers de porc caramélisés
+Tajine de poulet
+Tajine d’agneau
+Moussaka
+Chili con carne
+Chili sin carne
+Bœuf sauté aux légumes
+Bœuf teriyaki
+Bœuf mongol
+Steak tartare
+Carpaccio de bœuf
+Boulettes de bœuf sauce tomate
+Kefta
+Poulet rôti pommes de terre
+Poisson pané
+Saumon teriyaki
+Saumon à la crème
+Saumon grillé
+Cabillaud à la tomate
+Cabillaud en papillote
+Moules-frites
+Moules marinières
+Crevettes au curry
+Crevettes à l’ail
+Crevettes coco
+Calamars à la romaine
+Poke bowl
+Chirashi
+Ramen
+Udon sautés
+Bibimbap
+Yakitori
+Bao
+Dim sum
+Pad see ew
+Pho
+Curry japonais
+Curry de légumes
+Dahl de lentilles
+Falafels avec riz
+Shakshuka
+Œufs cocotte
+Omelette
+Quiche lorraine
+Quiche aux légumes
+Tourte à la viande
+Parmentier de saumon
+Parmentier de bœuf
+Gratin de courgettes
+Gratin de chou-fleur
+Gratin de pâtes
+Gratin de fruits de mer
+Cannellonis
+Pâtes pesto
+Pâtes 4 fromages
+Pâtes arrabbiata
+Pâtes aux champignons
+Pâtes saumon crème
+Risotto aux champignons
+Risotto au poulet
+Risotto aux fruits de mer
+Paella
+Arancini
+Polenta crémeuse
+Galettes de pommes de terre
+Pommes de terre sautées avec œufs
+Piadina
+Quesadillas
+Enchiladas
+Burritos
+Nachos gratinés
+Empanadas au poulet
+Pastilla au poulet
+Poke saumon
+Sandwich club
+Bagel saumon
+Panini
+Croque-madame
+Bruschetta
+Welsh
+Flammekueche
+Galette bretonne
+Raclette
+Mont d’Or au four
+Pot-au-feu
+Cassoulet
+Blanquette de poulet
+Coq au vin
+Bœuf-carottes
+Potée
+Quenelles sauce tomate
+Andouillette
+Saucisse-purée
+Saucisse-lentilles
